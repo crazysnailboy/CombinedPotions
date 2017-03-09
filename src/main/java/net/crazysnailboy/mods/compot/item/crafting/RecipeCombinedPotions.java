@@ -11,6 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.potion.PotionUtils;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 
@@ -18,35 +19,33 @@ import net.minecraft.world.World;
 public class RecipeCombinedPotions implements IRecipe
 {
 
-	private static final ItemStack[] EMPTY_ITEMS = new ItemStack[9];
-
-
 	private static int countSlotsNotEmpty(IInventory inventory)
 	{
 		int result = 0;
 		for ( int i = 0 ; i < inventory.getSizeInventory() ; i++ )
 		{
-			if (inventory.getStackInSlot(i) != null) result++;
+			if (!inventory.getStackInSlot(i).isEmpty()) result++;
 		}
 		return result;
 	}
 
 
+
 	@Override
 	public boolean matches(InventoryCrafting inv, World worldIn)
 	{
-		ItemStack tempStack = null;
+		ItemStack tempStack = ItemStack.EMPTY;
 
 		for ( int i = 0 ; i < inv.getSizeInventory() ; i++ )
 		{
 			ItemStack stack = inv.getStackInSlot(i);
-			if (stack != null)
+			if (!stack.isEmpty())
 			{
 
 				Item item = stack.getItem();
 				if (item != Items.TIPPED_ARROW && item != Items.POTIONITEM && item != Items.SPLASH_POTION && item != Items.LINGERING_POTION) return false;
 
-				if (tempStack == null)
+				if (tempStack.isEmpty())
 				{
 					tempStack = stack.copy();
 				}
@@ -64,7 +63,7 @@ public class RecipeCombinedPotions implements IRecipe
 	@Override
 	public ItemStack getCraftingResult(InventoryCrafting inv)
 	{
-		ItemStack outputStack = null;
+		ItemStack outputStack = ItemStack.EMPTY;
 		if (countSlotsNotEmpty(inv) <= 1) return outputStack;
 
 		Collection<PotionEffect> effects = new ArrayList<PotionEffect>();
@@ -72,9 +71,9 @@ public class RecipeCombinedPotions implements IRecipe
 		for ( int i = 0 ; i < inv.getSizeInventory() ; i++ )
 		{
 			ItemStack stack = inv.getStackInSlot(i);
-			if (stack != null)
+			if (!stack.isEmpty())
 			{
-				if (outputStack == null) outputStack = new ItemStack(stack.getItem(), 1, 0);
+				if (outputStack.isEmpty()) outputStack = new ItemStack(stack.getItem(), 1, 0);
 				effects.addAll(PotionUtils.getEffectsFromStack(stack));
 				PotionUtils.getPotionFromItem(stack);
 			}
@@ -95,13 +94,13 @@ public class RecipeCombinedPotions implements IRecipe
 	@Override
 	public ItemStack getRecipeOutput()
 	{
-		return null;
+		return ItemStack.EMPTY;
 	}
 
 	@Override
-	public ItemStack[] getRemainingItems(InventoryCrafting inv)
+	public NonNullList<ItemStack> getRemainingItems(InventoryCrafting inv)
 	{
-		return EMPTY_ITEMS;
+		return NonNullList.<ItemStack>withSize(inv.getSizeInventory(), ItemStack.EMPTY);
 	}
 
 }

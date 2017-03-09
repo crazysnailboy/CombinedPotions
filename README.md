@@ -1,3 +1,3 @@
 # Combined Potions
 
-### A mod for Minecraft 1.10.2
+### A mod for Minecraft 1.11.x
