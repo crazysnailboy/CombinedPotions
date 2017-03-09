@@ -1,0 +1,14 @@
+[{
+	"modid": "compot",
+	"name": "Combined Potions",
+	"description": "Allow crafting of multiple potions into a single potion with multiple effects",
+	"version": "${version}",
+	"mcversion": "${mcversion}",
+	"url": "https://minecraft.curseforge.com/projects/combined-potions",
+	"updateUrl": "",
+	"authorList": ["crazysnailboy"],
+	"credits": "",
+	"logoFile": "",
+	"screenshots": [],
+	"dependencies": []
+}]
