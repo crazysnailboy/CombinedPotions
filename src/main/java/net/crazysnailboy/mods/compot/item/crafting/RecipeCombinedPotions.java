@@ -2,7 +2,6 @@ package net.crazysnailboy.mods.compot.item.crafting;
 
 import java.util.ArrayList;
 import java.util.Collection;
-
 import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryCrafting;
@@ -18,18 +17,6 @@ import net.minecraft.world.World;
 @SuppressWarnings("deprecation")
 public class RecipeCombinedPotions implements IRecipe
 {
-
-	private static int countSlotsNotEmpty(IInventory inventory)
-	{
-		int result = 0;
-		for ( int i = 0 ; i < inventory.getSizeInventory() ; i++ )
-		{
-			if (!inventory.getStackInSlot(i).isEmpty()) result++;
-		}
-		return result;
-	}
-
-
 
 	@Override
 	public boolean matches(InventoryCrafting inv, World worldIn)
@@ -75,7 +62,6 @@ public class RecipeCombinedPotions implements IRecipe
 			{
 				if (outputStack.isEmpty()) outputStack = new ItemStack(stack.getItem(), 1, 0);
 				effects.addAll(PotionUtils.getEffectsFromStack(stack));
-				PotionUtils.getPotionFromItem(stack);
 			}
 		}
 
@@ -101,6 +87,16 @@ public class RecipeCombinedPotions implements IRecipe
 	public NonNullList<ItemStack> getRemainingItems(InventoryCrafting inv)
 	{
 		return NonNullList.<ItemStack>withSize(inv.getSizeInventory(), ItemStack.EMPTY);
+	}
+
+	private static int countSlotsNotEmpty(IInventory inventory)
+	{
+		int result = 0;
+		for ( int i = 0 ; i < inventory.getSizeInventory() ; i++ )
+		{
+			if (!inventory.getStackInSlot(i).isEmpty()) result++;
+		}
+		return result;
 	}
 
 }
