@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.List;
 import org.apache.commons.lang3.ArrayUtils;
 import net.crazysnailboy.mods.compot.CombinedPotions;
+import net.crazysnailboy.mods.compot.common.config.ModConfiguration;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryCrafting;
@@ -31,6 +32,7 @@ public class RecipeCombinedPotions2 implements IRecipe
 		ItemStack tempStack = null;
 		if (VALID_ITEMS == null) buildValidItemsArray();
 
+		int potionEffects = 0;
 		for ( int i = 0 ; i < inv.getSizeInventory() ; i++ )
 		{
 			ItemStack stack = inv.getStackInSlot(i);
@@ -48,6 +50,11 @@ public class RecipeCombinedPotions2 implements IRecipe
 					if (!canCombineItems(tempStack, stack)) return false;
 				}
 
+				if (ModConfiguration.maxPotionEffects >= 0)
+				{
+					potionEffects += getEffectsFromStack(stack).size();
+					if (potionEffects > ModConfiguration.maxPotionEffects) return false;
+				}
 			}
 		}
 
