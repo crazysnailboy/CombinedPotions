@@ -13,6 +13,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.RecipeSorter;
 
+
 @Mod(modid = CombinedPotions.MODID, name = CombinedPotions.NAME, version = CombinedPotions.VERSION, updateJSON = CombinedPotions.UPDATEJSON, dependencies = "after:potioncore")
 public class CombinedPotions
 {

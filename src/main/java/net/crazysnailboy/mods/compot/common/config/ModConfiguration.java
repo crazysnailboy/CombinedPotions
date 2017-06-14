@@ -5,6 +5,7 @@ import net.crazysnailboy.mods.compot.CombinedPotions;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Loader;
 
+
 public class ModConfiguration
 {
 

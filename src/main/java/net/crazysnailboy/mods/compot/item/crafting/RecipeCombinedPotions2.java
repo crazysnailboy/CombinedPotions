@@ -20,6 +20,7 @@ import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.Loader;
 
+
 @SuppressWarnings("deprecation")
 public class RecipeCombinedPotions2 implements IRecipe
 {
@@ -34,7 +35,7 @@ public class RecipeCombinedPotions2 implements IRecipe
 		if (VALID_ITEMS == null) buildValidItemsArray();
 
 		int potionEffects = 0;
-		for ( int i = 0 ; i < inv.getSizeInventory() ; i++ )
+		for (int i = 0; i < inv.getSizeInventory(); i++)
 		{
 			ItemStack stack = inv.getStackInSlot(i);
 			if (!stack.isEmpty())
@@ -70,7 +71,7 @@ public class RecipeCombinedPotions2 implements IRecipe
 
 		Collection<PotionEffect> effects = new ArrayList<PotionEffect>();
 
-		for ( int i = 0 ; i < inv.getSizeInventory() ; i++ )
+		for (int i = 0; i < inv.getSizeInventory(); i++)
 		{
 			ItemStack stack = inv.getStackInSlot(i);
 			if (!stack.isEmpty())
@@ -110,7 +111,7 @@ public class RecipeCombinedPotions2 implements IRecipe
 	private static int countSlotsNotEmpty(IInventory inventory)
 	{
 		int result = 0;
-		for ( int i = 0 ; i < inventory.getSizeInventory() ; i++ )
+		for (int i = 0; i < inventory.getSizeInventory(); i++)
 		{
 			if (!inventory.getStackInSlot(i).isEmpty()) result++;
 		}
@@ -126,13 +127,13 @@ public class RecipeCombinedPotions2 implements IRecipe
 		valid_items.add(Items.LINGERING_POTION);
 		valid_items.add(Items.TIPPED_ARROW);
 
-    	if (Loader.isModLoaded("potioncore"))
-    	{
-    		valid_items.add(Item.getByNameOrId("potioncore:custom_potion"));
-    		valid_items.add(Item.getByNameOrId("potioncore:custom_arrow"));
-    	}
+		if (Loader.isModLoaded("potioncore"))
+		{
+			valid_items.add(Item.getByNameOrId("potioncore:custom_potion"));
+			valid_items.add(Item.getByNameOrId("potioncore:custom_arrow"));
+		}
 
-    	VALID_ITEMS = valid_items.toArray(new Item[valid_items.size()]);
+		VALID_ITEMS = valid_items.toArray(new Item[valid_items.size()]);
 	}
 
 	private boolean canCombineItems(ItemStack stackA, ItemStack stackB)
@@ -185,7 +186,7 @@ public class RecipeCombinedPotions2 implements IRecipe
 			Method method = Class.forName("com.tmtravlr.potioncore.PotionCoreHelper").getMethod("getEffectsFromStack", ItemStack.class);
 			return (List<PotionEffect>)method.invoke(null, stack);
 		}
-		catch(Exception ex)
+		catch (Exception ex)
 		{
 			CombinedPotions.LOGGER.catching(ex);
 			return new ArrayList<PotionEffect>();
