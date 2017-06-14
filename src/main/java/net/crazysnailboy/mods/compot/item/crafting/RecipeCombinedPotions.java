@@ -14,6 +14,7 @@ import net.minecraft.potion.PotionUtils;
 import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 
+
 @SuppressWarnings("deprecation")
 public class RecipeCombinedPotions implements IRecipe
 {
@@ -24,7 +25,7 @@ public class RecipeCombinedPotions implements IRecipe
 		ItemStack tempStack = null;
 
 		int potionEffects = 0;
-		for ( int i = 0 ; i < inv.getSizeInventory() ; i++ )
+		for (int i = 0; i < inv.getSizeInventory(); i++)
 		{
 			ItemStack stack = inv.getStackInSlot(i);
 			if (stack != null)
@@ -60,7 +61,7 @@ public class RecipeCombinedPotions implements IRecipe
 
 		Collection<PotionEffect> effects = new ArrayList<PotionEffect>();
 
-		for ( int i = 0 ; i < inv.getSizeInventory() ; i++ )
+		for (int i = 0; i < inv.getSizeInventory(); i++)
 		{
 			ItemStack stack = inv.getStackInSlot(i);
 			if (stack != null)
@@ -99,7 +100,7 @@ public class RecipeCombinedPotions implements IRecipe
 	private static int countSlotsNotEmpty(IInventory inventory)
 	{
 		int result = 0;
-		for ( int i = 0 ; i < inventory.getSizeInventory() ; i++ )
+		for (int i = 0; i < inventory.getSizeInventory(); i++)
 		{
 			if (inventory.getStackInSlot(i) != null) result++;
 		}
