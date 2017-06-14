@@ -89,12 +89,6 @@ public class RecipeCombinedPotions2 implements IRecipe
 	}
 
 	@Override
-	public int getRecipeSize()
-	{
-		return 9;
-	}
-
-	@Override
 	public ItemStack getRecipeOutput()
 	{
 		return ItemStack.EMPTY;
@@ -190,6 +184,12 @@ public class RecipeCombinedPotions2 implements IRecipe
 			CombinedPotions.LOGGER.catching(ex);
 			return new ArrayList<PotionEffect>();
 		}
+	}
+
+	@Override
+	public boolean canFit(int width, int height)
+	{
+		return width * height >= 1;
 	}
 
 }

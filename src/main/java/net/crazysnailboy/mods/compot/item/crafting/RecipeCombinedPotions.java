@@ -79,12 +79,6 @@ public class RecipeCombinedPotions implements IRecipe
 	}
 
 	@Override
-	public int getRecipeSize()
-	{
-		return 9;
-	}
-
-	@Override
 	public ItemStack getRecipeOutput()
 	{
 		return ItemStack.EMPTY;
@@ -104,6 +98,12 @@ public class RecipeCombinedPotions implements IRecipe
 			if (!inventory.getStackInSlot(i).isEmpty()) result++;
 		}
 		return result;
+	}
+
+	@Override
+	public boolean canFit(int width, int height)
+	{
+		return width * height >= 1;
 	}
 
 }
