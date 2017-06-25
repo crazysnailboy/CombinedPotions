@@ -22,7 +22,7 @@ import net.minecraftforge.fml.common.Loader;
 
 
 @SuppressWarnings("deprecation")
-public class RecipeCombinedPotions2 extends net.minecraftforge.fml.common.registry.IForgeRegistryEntry.Impl<IRecipe> implements IRecipe
+public class RecipeCombinedPotions2 extends net.minecraftforge.registries.IForgeRegistryEntry.Impl<IRecipe> implements IRecipe
 {
 
 	private static Item[] VALID_ITEMS = null;

@@ -10,7 +10,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.oredict.RecipeSorter;
 
 
@@ -23,7 +23,7 @@ public class CombinedPotions
 	public static final String NAME = "Combined Potions";
 	public static final String VERSION = "${version}";
 	public static final String UPDATEJSON = "https://raw.githubusercontent.com/crazysnailboy/CombinedPotions/master/update.json";
-	public static final String DEPENDENCIES = "required-after:forge@[14.21.0.2324,);after:potioncore;";
+	public static final String DEPENDENCIES = "required-after:forge@[14.21.0.2363,);after:potioncore;";
 
 	public static final Logger LOGGER = LogManager.getLogger(MODID);
 
@@ -39,12 +39,12 @@ public class CombinedPotions
 	{
 		if (!Loader.isModLoaded("potioncore"))
 		{
-			GameRegistry.register(new RecipeCombinedPotions().setRegistryName("combined_potions"));
+			ForgeRegistries.RECIPES.register(new RecipeCombinedPotions().setRegistryName("combined_potions"));
 			RecipeSorter.register(MODID + ":" + RecipeCombinedPotions.class.getSimpleName().toLowerCase(), RecipeCombinedPotions.class, RecipeSorter.Category.SHAPELESS, "after:*");
 		}
 		else
 		{
-			GameRegistry.register(new RecipeCombinedPotions2().setRegistryName("combined_potions"));
+			ForgeRegistries.RECIPES.register(new RecipeCombinedPotions2().setRegistryName("combined_potions"));
 			RecipeSorter.register(MODID + ":" + RecipeCombinedPotions2.class.getSimpleName().toLowerCase(), RecipeCombinedPotions2.class, RecipeSorter.Category.SHAPELESS, "after:*");
 		}
 	}

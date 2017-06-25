@@ -17,7 +17,7 @@ import net.minecraft.world.World;
 
 
 @SuppressWarnings("deprecation")
-public class RecipeCombinedPotions extends net.minecraftforge.fml.common.registry.IForgeRegistryEntry.Impl<IRecipe> implements IRecipe
+public class RecipeCombinedPotions extends net.minecraftforge.registries.IForgeRegistryEntry.Impl<IRecipe> implements IRecipe
 {
 
 	@Override
