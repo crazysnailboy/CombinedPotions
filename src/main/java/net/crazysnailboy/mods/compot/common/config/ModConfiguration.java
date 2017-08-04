@@ -9,7 +9,12 @@ import net.minecraftforge.fml.common.Loader;
 public class ModConfiguration
 {
 
-	public static int maxPotionEffects = -1;
+	private static class DefaultValues
+	{
+		private static final int maxPotionEffects = -1;
+	}
+
+	public static int maxPotionEffects = DefaultValues.maxPotionEffects;
 
 
 	public static void preInit()
@@ -20,7 +25,7 @@ public class ModConfiguration
 		config.load();
 
 		// set the variables to the configuration values
-		maxPotionEffects = config.get(Configuration.CATEGORY_GENERAL, "maxPotionEffects", maxPotionEffects, "Maximum number of potion effects that can be applied to a single item. Use -1 for no limit.").getInt();
+		maxPotionEffects = config.get(Configuration.CATEGORY_GENERAL, "maxPotionEffects", DefaultValues.maxPotionEffects, "Maximum number of potion effects that can be applied to a single item. Use -1 for no limit.").getInt();
 
 		// save the configuration if it's changed
 		if (config.hasChanged()) config.save();
